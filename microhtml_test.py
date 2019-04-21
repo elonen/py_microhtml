@@ -20,8 +20,9 @@ def long_example():
                     ᑉa("Nested", href='#anchortest'), '|', 'link')))).pretty()
 
 correct_result = '''
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en_US">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en_US" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US">
   <head>
     <title>
       Test page
@@ -31,7 +32,7 @@ correct_result = '''
     <p width="123">
       Hi!
     </p>
-    <hr class="someclass">
+    <hr class="someclass" />
     <p>
       Literal strings are safely &lt;em&gt;escaped&lt;/em&gt; by default.
     </p>
@@ -45,7 +46,8 @@ correct_result = '''
       </div>
     </div>
   </body>
-</html>'''
+</html>
+'''
 
 class TestLongExample(TestCase):
     def test_correct_result(self):

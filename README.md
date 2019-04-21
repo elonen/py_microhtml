@@ -13,22 +13,23 @@ print(
 
 This prints out a valid, formatted XHTML document:
 ```xml
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
- <head>
-   <title>
-     Test page
-   </title>
- </head>
- <body>
-   <span class="example">One line example!</span>
- </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Test page
+    </title>
+  </head>
+  <body>
+    <span class="example">Simple example.</span>
+  </body>
 </html>
 ```
 
 Yes, you'll probably need to copy-paste the unicode symbol and yes, you'll want to use a modern editor, but the resulting syntax is very compact and will not collide with your identifiers even with the `import *`.
 
-Minimalism also extends to implementation – it's _very_ short (70 lines in v0.1). Check out `microhtml.py`.
+Minimalism also extends to implementation – it's _very_ short (<80 lines in v0.2). Check out `microhtml/__init__.py`.
 
 Longer example with more features showcased:
 
@@ -56,8 +57,9 @@ print(
 This outputs:
 
 ```xml
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en_US">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en_US" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US">
   <head>
     <title>
       Test page
@@ -67,7 +69,7 @@ This outputs:
     <p width="123">
       Hi!
     </p>
-    <hr class="someclass">
+    <hr class="someclass" />
     <p>
       Literal strings are safely &lt;em&gt;escaped&lt;/em&gt; by default.
     </p>
@@ -84,9 +86,17 @@ This outputs:
 </html>
 ```
 
+## Building
+
+To build a pypi package, simply issue `make`. It will install a venv, run tests, generate a .pyi (type/syntax completion stub) and build a source package (sdist). Use `make clean` to clean up.
+
+## Alternatives and acknowledgements
+
 If you find unicode characters in source code a horrendous abomination, and don't mind endless nested `with` expressions, you might prefer [Yattag](http://www.yattag.org/).
 
 Uses `tidylib` for pretty printing. Inspiration drawn from `pyhtml` by Cenk Altı.
+
+## Copyright
 
 Copyright 2019 Jarno Elonen.
 Released under the MIT license. See LICENSE for details.
