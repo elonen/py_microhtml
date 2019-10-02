@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='py_microhtml',  
-     version='0.2',
+     version='0.3',
      author="Jarno Elonen",
      author_email="elonen@iki.fi",
      description="Minimalistic HTML builder for Python 3.6+ with compact syntax",

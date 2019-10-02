@@ -15,6 +15,7 @@ def long_example():
             ᑉp('Literal strings are safely <em>escaped</em> by default.'),
             ᑉrawstr(raw_html), # Use ᑉrawstr() if you don't want escaping
             ᑉtag('applet', code='Bubbles.class', width=350, height=350),  # Tag with custom name
+            ᑉdiv("custom", data__custom="abc"), # '__' in attribute names is replaced with '-'
             ᑉdiv(style='float: right')(  # This is how you can type attributes on left and content on right
                 ᑉdiv(style='border: 1px solid black')(
                     ᑉa("Nested", href='#anchortest'), '|', 'link')))).pretty()
@@ -40,6 +41,9 @@ correct_result = '''
       Third <em>and last</em> paragraph
     </p><applet code="Bubbles.class" width="350" height="350">
       </applet>
+    <div data-custom="abc">
+      custom
+    </div>
     <div style="float: right">
       <div style="border: 1px solid black">
         <a href="#anchortest">Nested</a>|link

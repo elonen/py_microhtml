@@ -17,7 +17,8 @@ class _TagWrapper:
 
         self.tag_attribs = ''
         for k, v in kwargs.items():
-            self.tag_attribs += f' {k.strip("_")}="{html.escape(str(v))}"'
+            attrname = (k[:-1] if k.endswith('_') else k).replace('__', '-')
+            self.tag_attribs += f' {attrname}="{html.escape(str(v))}"'
 
     def __call__(self, *content_args) -> '_TagWrapper':
         for c in content_args:

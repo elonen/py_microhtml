@@ -29,7 +29,7 @@ This prints out a valid, formatted XHTML document:
 
 Yes, you'll probably need to copy-paste the unicode symbol and yes, you'll want to use a modern editor, but the resulting syntax is very compact and will not collide with your identifiers even with the `import *`.
 
-Minimalism also extends to implementation – it's _very_ short (<80 lines in v0.2). Check out `microhtml/__init__.py`.
+Minimalism also extends to implementation – it's _very_ short (<80 lines in v0.3). Check out `microhtml/__init__.py`.
 
 Longer example with more features showcased:
 
@@ -49,6 +49,7 @@ print(
         ᑉp('Literal strings are safely <em>escaped</em> by default.'),
         ᑉrawstr(raw_html), # Use ᑉrawstr() if you don't want escaping
         ᑉtag('applet', code='Bubbles.class', width=350, height=350),  # Tag with custom name
+        ᑉdiv("custom", data__custom="abc"), # '__' in attribute names is replaced with '-'
         ᑉdiv(style='float: right')(  # This is how you can type attributes on left and content on right
             ᑉdiv(style='border: 1px solid black')(
                 ᑉa("Nested", href='#anchortest'), '|', 'link')))).pretty())
@@ -77,6 +78,9 @@ This outputs:
       Third <em>and last</em> paragraph
     </p><applet code="Bubbles.class" width="350" height="350">
       </applet>
+    <div data-custom="abc">
+      custom
+    </div>
     <div style="float: right">
       <div style="border: 1px solid black">
         <a href="#anchortest">Nested</a>|link
